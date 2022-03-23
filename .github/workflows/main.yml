@@ -39,5 +39,8 @@ jobs:
       - name: Surge install globally
         run: npm i -g surge
         
-      - name: Deploy on surge
+      - name: Deploy on surge first domain
         run: surge ./dist https://us-react-form-builder.surge.sh/ --token ${{secrets.SURGE_TOKEN}}
+        
+      - name: Deploy on surge second domain
+        run: surge ./dist https://react-form-builder.surge.sh/ --token ${{secrets.SURGE_TOKEN}}
