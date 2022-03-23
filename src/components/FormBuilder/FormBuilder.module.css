@@ -1,0 +1,44 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_title {
+    letter-spacing: 5px;
+}
+
+.form_title::first-letter {
+    color: #0d6efd;
+}
+
+.col_title::before,
+.col_title::after {
+    background-color: rgba(0, 0, 0, 0.3);
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 30%;
+    margin: 0 auto;
+}
+
+.validate_fields {
+    height: 0;
+    overflow: hidden;
+    transition: 0.4s all;
+}
+
+span:before,
+span:after {
+    background-color: rgba(0, 0, 0, 0.3);
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 40%;
+    margin: 0 auto;
+}
