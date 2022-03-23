@@ -1,0 +1,46 @@
+{
+  "form": {
+        "sections": [
+            {
+                "section_title": "Basic Information",
+                "fields": [
+                    {
+                        "name": "name",
+                        "label": "Name",
+                        "required": true,
+                        "html_element": "text"
+                    },
+                    {
+                        "name": "email",
+                        "label": "Email",
+                        "hidden": false,
+                        "required": true,
+                        "html_element": "email"
+                    },
+                    {
+                        "name": "phone",
+                        "label": "Phone",
+                        "required": true,
+                        "html_element": "text"
+                    },
+                    {
+                        "name": "age",
+                        "label": "Age",
+                        "hidden": false,
+                        "options": [],
+                        "required": true,
+                        "html_element": "number"
+                    },
+                    {
+                        "name": "photo",
+                        "label": "File",
+                        "hidden": false,
+                        "options": [],
+                        "required": true,
+                        "html_element": "file"
+                    }
+                ]
+            }
+        ]
+    }
+}
