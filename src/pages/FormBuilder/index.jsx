@@ -74,7 +74,7 @@ const FormBuilder = () => {
     <div className={`${styles.wrapper}`}>
       <h1 className={`${styles.form_title} text-center`}>Form Builder</h1>
       <div className="container my-5">
-        <h3 className={`${styles.col_title} text-center`}> Form Information </h3>
+        {/* <h3 className={`${styles.col_title} text-center`}> Form Information </h3>
         <div className="row">
           <div className="col">
             <div className="mb-3">
@@ -90,7 +90,7 @@ const FormBuilder = () => {
             </div>
           </div>
         </div>
-        <hr />
+        <hr /> */}
         <div className="row">
           <div className="col">
             <h3 className={`${styles.col_title} text-center`}> Layout </h3>

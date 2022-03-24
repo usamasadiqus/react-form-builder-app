@@ -1,3 +1,5 @@
+import styles from "./Layout.module.css";
+
 const Layout = ({ fields, editInput, deleteInput }) => {
   return (
     <ul className="list-group my-5">
