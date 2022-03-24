@@ -53,22 +53,10 @@ const FormBuilder = () => {
     // setInputField(inputField.title);
   };
 
-  const generateForm = () => {
+  const previewForm = () => {
     localStorage.setItem("form-data", JSON.stringify(inputField, null, 4));
     navigate("/form-preview");
   };
-
-  /* const exportForm = () => {
-    let dataType = `data:text/json;charset=utf-8,${encodeURIComponent(
-      JSON.stringify(inputField, null, 4)
-    )}`;
-    let anchor = document.createElement("a");
-    anchor.setAttribute("href", dataType);
-    anchor.setAttribute("download", "form-data.json");
-    document.body.appendChild(anchor);
-    anchor.click();
-    anchor.remove();
-  }; */
 
   return (
     <div className={`${styles.wrapper}`}>
@@ -118,19 +106,11 @@ const FormBuilder = () => {
             <div className="col">
               <button
                 className="btn btn-outline-primary w-100"
-                onClick={() => generateForm()}
+                onClick={() => previewForm()}
               >
-                Generate Form
+                Preview
               </button>
             </div>
-            {/* <div className="col">
-              <button
-                className="btn btn-outline-primary w-100"
-                onClick={() => exportForm()}
-              >
-                Export Form
-              </button>
-            </div> */}
           </div>
         )}
       </div>

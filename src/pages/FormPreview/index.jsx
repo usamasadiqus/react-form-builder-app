@@ -3,15 +3,29 @@ import styles from "./FormPreview.module.css";
 const FormPreview = () => {
   let data = JSON.parse(localStorage.getItem("form-data"));
 
+  const exportForm = () => {
+    let encodedUri = `data:text/json;charset=utf-8,${encodeURIComponent(
+      JSON.stringify(data, null, 4)
+    )}`;
+    let anchor = document.createElement("a");
+    anchor.setAttribute("href", encodedUri);
+    anchor.setAttribute("download", "form-data.json");
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+  };
+
   return (
     <div className="container my-5">
-      <h1 className={`${styles.form_title} text-center`}>{data.title}</h1>
+      <h1 className={`${styles.form_title} text-center`}>
+        {data.title !== "" ? data.title : "User Information"}
+      </h1>
       <div className="row">
-        <div className="col">
-          <div className="card my-5">
+        <div className="col d-flex justify-content-center">
+          <div className="card w-50 my-5">
             <div className="card-body">
               {data.fields.map((input, index) => (
-                <form>
+                <form key={index}>
                   <div className="mb-3">
                     <label htmlFor="name" className="form-label">
                       {input.name}
@@ -28,6 +42,12 @@ const FormPreview = () => {
                   </div>
                 </form>
               ))}
+              <button
+                className="btn btn-outline-primary w-100"
+                onClick={() => exportForm()}
+              >
+                Export Form
+              </button>
             </div>
           </div>
         </div>
