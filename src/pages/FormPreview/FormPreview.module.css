@@ -1,0 +1,7 @@
+.form_title {
+    letter-spacing: 5px;
+}
+
+.form_title::first-letter {
+    color: #0d6efd;
+}

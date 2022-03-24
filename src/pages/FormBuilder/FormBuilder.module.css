@@ -25,14 +25,14 @@
     margin: 0 auto;
 }
 
-.validate_fields {
+/* .validate_fields {
     height: 0;
     overflow: hidden;
     transition: 0.4s all;
-}
+} */
 
-span:before,
-span:after {
+form .or-span:before,
+form .or-span:after {
     background-color: rgba(0, 0, 0, 0.3);
     content: "";
     display: inline-block;

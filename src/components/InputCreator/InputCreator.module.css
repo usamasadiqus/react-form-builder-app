@@ -1,0 +1,11 @@
+.input_creator .col_title::before,
+.input_creator .col_title::after {
+    background-color: rgba(0, 0, 0, 0.3);
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 30%;
+    margin: 0 auto;
+}
