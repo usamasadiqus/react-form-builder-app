@@ -140,6 +140,8 @@ const InpurCreator = ({ handleSubmit, onSubmit, register, errors }) => {
                   className="form-check-input"
                   type="checkbox"
                   id="required"
+                  value={true}
+                  {...register("required")}
                 />
                 <label className="form-check-label" htmlFor="required">
                   Required
@@ -154,6 +156,7 @@ const InpurCreator = ({ handleSubmit, onSubmit, register, errors }) => {
                   className="form-control"
                   id="min"
                   defaultValue={0}
+                  {...register("min")}
                 />
               </div>
               <div className="mb-3">
@@ -165,6 +168,7 @@ const InpurCreator = ({ handleSubmit, onSubmit, register, errors }) => {
                   className="form-control"
                   id="max"
                   defaultValue={0}
+                  {...register("max")}
                 />
               </div>
               <div className="mb-3">
@@ -176,6 +180,7 @@ const InpurCreator = ({ handleSubmit, onSubmit, register, errors }) => {
                   className="form-control"
                   id="min-length"
                   defaultValue={0}
+                  {...register("min-length")}
                 />
               </div>
               <div className="mb-3">
@@ -187,13 +192,19 @@ const InpurCreator = ({ handleSubmit, onSubmit, register, errors }) => {
                   className="form-control"
                   id="max-length"
                   defaultValue={0}
+                  {...register("max-length")}
                 />
               </div>
               <div className="mb-3">
                 <label htmlFor="pattern" className="form-label">
                   Pattern:
                 </label>
-                <input type="text" className="form-control" id="pattern" />
+                <input
+                  type="text"
+                  className="form-control"
+                  id="pattern"
+                  {...register("pattern")}
+                />
               </div>
             </div>
           ) : null}

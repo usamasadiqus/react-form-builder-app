@@ -24,24 +24,30 @@ const FormPreview = () => {
         <div className="col d-flex justify-content-center">
           <div className="card w-50 my-5">
             <div className="card-body">
-              {data.fields.map((input, index) => (
-                <form key={index}>
-                  <div className="mb-3">
-                    <label htmlFor="name" className="form-label">
-                      {input.name}
-                    </label>
-                    <input
-                      type={input.type}
-                      className="form-control"
-                      id="name"
-                      // {...register("name", { required: true })}
-                    />
-                    {/* {errors.name && (
-                  <span className="text-danger">This field is required</span>
-                )} */}
-                  </div>
-                </form>
-              ))}
+              <form>
+                {data.fields.map((input, index) => {
+                  console.log(input);
+                  const { name, type, required } = input;
+
+                  return (
+                    <div className="mb-3" key={index}>
+                      <label htmlFor="name" className="form-label">
+                        {name}
+                      </label>
+                      <input
+                        type={type}
+                        className="form-control"
+                        id="name"
+                        required={required ? required : false}
+                        // {...register("name", { required: true })}
+                      />
+                      {/* {errors.name && (
+                    <span className="text-danger">This field is required</span>
+                  )} */}
+                    </div>
+                  );
+                })}
+              </form>
               <button
                 className="btn btn-outline-primary w-100"
                 onClick={() => exportForm()}
