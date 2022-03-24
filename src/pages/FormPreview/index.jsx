@@ -26,8 +26,16 @@ const FormPreview = () => {
             <div className="card-body">
               <form>
                 {data.fields.map((input, index) => {
-                  console.log(input);
-                  const { name, type, required } = input;
+                  const {
+                    name,
+                    type,
+                    required,
+                    min,
+                    minLength,
+                    max,
+                    maxLength,
+                    pattern,
+                  } = input;
 
                   return (
                     <div className="mb-3" key={index}>
@@ -38,8 +46,12 @@ const FormPreview = () => {
                         type={type}
                         className="form-control"
                         id="name"
-                        required={required ? required : false}
-                        // {...register("name", { required: true })}
+                        required={required ? required : "false"}
+                        min={min === 0 ? "" : min}
+                        minLength={minLength === 0 ? "" : minLength}
+                        max={max === 0 ? "" : max}
+                        maxLength={maxLength === 0 ? "" : maxLength}
+                        pattern={pattern}
                       />
                       {/* {errors.name && (
                     <span className="text-danger">This field is required</span>
