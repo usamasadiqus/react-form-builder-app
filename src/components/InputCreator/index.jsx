@@ -60,10 +60,6 @@ const InpurCreator = ({
       value: "image",
     },
     {
-      label: "Reset",
-      value: "reset",
-    },
-    {
       label: "Search",
       value: "search",
     },
@@ -82,10 +78,6 @@ const InpurCreator = ({
     {
       label: "date",
       value: "date",
-    },
-    {
-      label: "datetime",
-      value: "datetime",
     },
     {
       label: "datetime-local",
