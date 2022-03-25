@@ -56,11 +56,11 @@ const FormPreview = () => {
                         pattern,
                       } = input;
 
-                      /* const properties = {};
+                      const properties = {};
 
                       Object.keys(input).forEach(
                         (key) => input[key] && (properties[key] = input[key])
-                      ); */
+                      );
 
                       return (
                         <div className="mb-3" key={index}>
@@ -71,18 +71,17 @@ const FormPreview = () => {
                           >
                             {name}
                           </label>
-                          <input type="" />
                           <input
                             type={type}
                             className="form-control"
                             // id={name}
-                            {...(min ? { min } : {})}
-                            {...(minLength ? { minLength } : {})}
-                            {...(max ? { max } : {})}
-                            {...(maxLength ? { maxLength } : {})}
-                            {...(pattern ? { pattern } : {})}
-                            // {...properties}
-                            {...register(`${name}`, { required })}
+                            // {...(min ? { min } : {})}
+                            // {...(minLength ? { minLength } : {})}
+                            // {...(max ? { max } : {})}
+                            // {...(maxLength ? { maxLength } : {})}
+                            // {...(pattern ? { pattern } : {})}
+                            {...properties}
+                            {...register(`${name}`)}
                           />
                           {/* {errors.name.type === "required" && (
                             <span className="text-danger">
