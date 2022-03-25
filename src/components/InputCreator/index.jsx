@@ -1,8 +1,11 @@
-import { useState } from "react";
-
-const InpurCreator = ({ handleSubmit, onSubmit, register, errors }) => {
-  const [validation, setValidation] = useState(false);
-
+const InpurCreator = ({
+  handleSubmit,
+  onSubmit,
+  register,
+  errors,
+  validation,
+  setValidation,
+}) => {
   const inputTypes = [
     {
       label: "Text",
@@ -35,6 +38,10 @@ const InpurCreator = ({ handleSubmit, onSubmit, register, errors }) => {
     {
       label: "Email",
       value: "email",
+    },
+    {
+      label: "File",
+      value: "file",
     },
     {
       label: "Range",
@@ -131,7 +138,7 @@ const InpurCreator = ({ handleSubmit, onSubmit, register, errors }) => {
               Show Validation
             </label>
           </div>
-          {validation ? (
+          {validation && (
             // <div className={`${styles.validate_fields}`}>
             <div>
               <hr className="my-4" />
@@ -207,19 +214,10 @@ const InpurCreator = ({ handleSubmit, onSubmit, register, errors }) => {
                 />
               </div>
             </div>
-          ) : null}
+          )}
           <button type="submit" className="btn btn-primary w-100 my-2">
             Create
           </button>
-          {/* <div className="text-center">
-                    <span className="or-span"> or </span>
-                  </div>
-                  <button
-                    type="submit"
-                    className="btn btn-outline-primary w-100 my-2"
-                  >
-                    Generate Form
-                  </button> */}
         </form>
       </div>
     </div>

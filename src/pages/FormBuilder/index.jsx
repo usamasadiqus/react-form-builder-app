@@ -8,6 +8,7 @@ import styles from "./FormBuilder.module.css";
 const FormBuilder = () => {
   const navigate = useNavigate();
 
+  const [validation, setValidation] = useState(false);
   const [inputField, setInputField] = useState({
     title: "",
     fields: [],
@@ -39,6 +40,8 @@ const FormBuilder = () => {
     fields.push(inputData);
 
     setInputField({ ...inputField, fields });
+
+    setValidation(false);
 
     reset();
   };
@@ -98,6 +101,8 @@ const FormBuilder = () => {
               onSubmit={onSubmit}
               register={register}
               errors={errors}
+              validation={validation}
+              setValidation={setValidation}
             />
           </div>
         </div>

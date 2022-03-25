@@ -1,6 +1,10 @@
+import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import styles from "./FormPreview.module.css";
 
 const FormPreview = () => {
+  const { register, handleSubmit } = useForm();
+
   let data = JSON.parse(localStorage.getItem("form-data"));
 
   const exportForm = () => {
@@ -15,61 +19,84 @@ const FormPreview = () => {
     anchor.remove();
   };
 
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <div className="container my-5">
-      <h1 className={`${styles.form_title} text-center`}>
-        {data.title !== "" ? data.title : "User Information"}
-      </h1>
-      <div className="row">
-        <div className="col d-flex justify-content-center">
-          <div className="card w-50 my-5">
-            <div className="card-body">
-              <form>
-                {data.fields.map((input, index) => {
-                  const {
-                    name,
-                    type,
-                    required,
-                    min,
-                    minLength,
-                    max,
-                    maxLength,
-                    pattern,
-                  } = input;
+      {!data ? (
+        <div className={`${styles.flex_style} text-center`}>
+          <h2 className="mt-5 display-3">No fields available!</h2>
+          <Link to="/">Create Form</Link>
+        </div>
+      ) : (
+        <>
+          <h1 className={`${styles.form_title} text-center`}>
+            {data.title !== "" ? data.title : "User Information"}
+          </h1>
+          <div className="row">
+            <div className="col d-flex justify-content-center">
+              <div className="card w-50 my-5">
+                <div className="card-body">
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                    {data.fields.map((input, index) => {
+                      const {
+                        name,
+                        type,
+                        required,
+                        min,
+                        minLength,
+                        max,
+                        maxLength,
+                        pattern,
+                      } = input;
 
-                  return (
-                    <div className="mb-3" key={index}>
-                      <label htmlFor="name" className="form-label">
-                        {name}
-                      </label>
-                      <input
-                        type={type}
-                        className="form-control"
-                        id="name"
-                        required={required}
-                        min={min === 0 ? "" : min}
-                        minLength={minLength === 0 ? "" : minLength}
-                        max={max === 0 ? "" : max}
-                        maxLength={maxLength === 0 ? "" : maxLength}
-                        pattern={pattern}
-                      />
-                      {/* {errors.name && (
+                      return (
+                        <div className="mb-3" key={index}>
+                          <label
+                            htmlFor="name"
+                            className="form-label"
+                            style={{ textTransform: "capitalize" }}
+                          >
+                            {name}
+                          </label>
+                          <input
+                            type={type}
+                            className="form-control"
+                            id="name"
+                            // min={min === 0 ? "" : min}
+                            // minLength={minLength === 0 ? "" : minLength}
+                            // max={max === 0 ? "" : max}
+                            // maxLength={maxLength === 0 ? "" : maxLength}
+                            // pattern={pattern}
+                            {...register(`${name}`, { required })}
+                          />
+                          {/* {errors.name && (
                     <span className="text-danger">This field is required</span>
                   )} */}
-                    </div>
-                  );
-                })}
-              </form>
-              <button
-                className="btn btn-outline-primary w-100"
-                onClick={() => exportForm()}
-              >
-                Export Form
-              </button>
+                        </div>
+                      );
+                    })}
+                    <button
+                      type="submit"
+                      className="btn btn-primary w-100 mb-3"
+                    >
+                      Submit
+                    </button>
+                  </form>
+                  <button
+                    className="btn btn-outline-primary w-100"
+                    onClick={() => exportForm()}
+                  >
+                    Export Form
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 };
