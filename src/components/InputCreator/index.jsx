@@ -129,7 +129,10 @@ const InpurCreator = ({
             <select
               className="form-select"
               aria-label="Select input type"
-              {...register("type", { required: true })}
+              {...register("type", {
+                required: true,
+                onChange: (e) => setInpType(e.target.value),
+              })}
             >
               {inputTypes.map((type, index) => (
                 <option value={type.value} key={index}>
@@ -141,6 +144,482 @@ const InpurCreator = ({
           {/* {errors.type && (
                     <span className="text-danger">This field is required</span>
                   )} */}
+          {inpType === "textarea" && (
+            <>
+              <div className="mb-3">
+                <label htmlFor="rows" className="form-label">
+                  Rows:
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="rows"
+                  {...register("rows", { required: true })}
+                />
+                {errors.rows && (
+                  <span className="text-danger">This field is required</span>
+                )}
+                {/* {errors.name.type === "minLength" && (
+                      <span className="text-danger">
+                        Min length must be at least 2 characters
+                      </span>
+                    )} */}
+              </div>
+              <div className="mb-3">
+                <label htmlFor="cols" className="form-label">
+                  Cols:
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="cols"
+                  {...register("cols", { required: true })}
+                />
+                {errors.cols && (
+                  <span className="text-danger">This field is required</span>
+                )}
+                {/* {errors.name.type === "minLength" && (
+                      <span className="text-danger">
+                        Min length must be at least 2 characters
+                      </span>
+                    )} */}
+              </div>
+            </>
+          )}
+          {inpType === "file" && (
+            <div className="mb-3">
+              <label htmlFor="accept" className="form-label">
+                Accept:
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="accept"
+                {...register("accept", { required: true })}
+              />
+              {errors.accept && (
+                <span className="text-danger">This field is required</span>
+              )}
+              {/* {errors.name.type === "minLength" && (
+                      <span className="text-danger">
+                        Min length must be at least 2 characters
+                      </span>
+                    )} */}
+            </div>
+          )}
+          {inpType === "range" && (
+            <>
+              <div className="mb-3">
+                <label htmlFor="min" className="form-label">
+                  Min:
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="min"
+                  {...register("min", { required: true })}
+                />
+                {errors.min && (
+                  <span className="text-danger">This field is required</span>
+                )}
+                {/* {errors.name.type === "minLength" && (
+                      <span className="text-danger">
+                        Min length must be at least 2 characters
+                      </span>
+                    )} */}
+              </div>
+              <div className="mb-3">
+                <label htmlFor="max" className="form-label">
+                  Max:
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="max"
+                  {...register("max", { required: true })}
+                />
+                {errors.max && (
+                  <span className="text-danger">This field is required</span>
+                )}
+                {/* {errors.name.type === "minLength" && (
+                      <span className="text-danger">
+                        Min length must be at least 2 characters
+                      </span>
+                    )} */}
+              </div>
+              <div className="mb-3">
+                <label htmlFor="value" className="form-label">
+                  Value:
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="value"
+                  {...register("value", { required: true })}
+                />
+                {errors.value && (
+                  <span className="text-danger">This field is required</span>
+                )}
+                {/* {errors.name.type === "minLength" && (
+                      <span className="text-danger">
+                        Min length must be at least 2 characters
+                      </span>
+                    )} */}
+              </div>
+            </>
+          )}
+          {inpType === "color" && (
+            <div className="mb-3">
+              <label htmlFor="value" className="form-label">
+                Value:
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="value"
+                {...register("value", { required: true })}
+              />
+              {errors.value && (
+                <span className="text-danger">This field is required</span>
+              )}
+              {/* {errors.name.type === "minLength" && (
+                      <span className="text-danger">
+                        Min length must be at least 2 characters
+                      </span>
+                    )} */}
+            </div>
+          )}
+          {inpType === "hidden" && (
+            <div className="mb-3">
+              <label htmlFor="value" className="form-label">
+                Value:
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="value"
+                {...register("value", { required: true })}
+              />
+              {errors.value && (
+                <span className="text-danger">This field is required</span>
+              )}
+              {/* {errors.name.type === "minLength" && (
+                      <span className="text-danger">
+                        Min length must be at least 2 characters
+                      </span>
+                    )} */}
+            </div>
+          )}
+          {inpType === "image" && (
+            <>
+              <div className="mb-3">
+                <label htmlFor="src" className="form-label">
+                  Src:
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="src"
+                  {...register("src", { required: true })}
+                />
+                {errors.src && (
+                  <span className="text-danger">This field is required</span>
+                )}
+                {/* {errors.name.type === "minLength" && (
+                      <span className="text-danger">
+                        Min length must be at least 2 characters
+                      </span>
+                    )} */}
+              </div>
+              <div className="mb-3">
+                <label htmlFor="alt" className="form-label">
+                  Alt:
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="alt"
+                  {...register("alt", { required: true })}
+                />
+                {errors.alt && (
+                  <span className="text-danger">This field is required</span>
+                )}
+                {/* {errors.name.type === "minLength" && (
+                      <span className="text-danger">
+                        Min length must be at least 2 characters
+                      </span>
+                    )} */}
+              </div>
+            </>
+          )}
+          {inpType === "time" && (
+            <>
+              <div className="mb-3">
+                <label htmlFor="min" className="form-label">
+                  Min:
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="min"
+                  placeholder="09:00"
+                  {...register("min", { required: true })}
+                />
+                {errors.min && (
+                  <span className="text-danger">This field is required</span>
+                )}
+                {/* {errors.name.type === "minLength" && (
+                      <span className="text-danger">
+                        Min length must be at least 2 characters
+                      </span>
+                    )} */}
+              </div>
+              <div className="mb-3">
+                <label htmlFor="max" className="form-label">
+                  Max:
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="max"
+                  placeholder="18:00"
+                  {...register("max", { required: true })}
+                />
+                {errors.max && (
+                  <span className="text-danger">This field is required</span>
+                )}
+                {/* {errors.name.type === "minLength" && (
+                      <span className="text-danger">
+                        Min length must be at least 2 characters
+                      </span>
+                    )} */}
+              </div>
+            </>
+          )}
+          {inpType === "date" && (
+            <>
+              <div className="mb-3">
+                <label htmlFor="min" className="form-label">
+                  Min:
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="min"
+                  placeholder="2017-01-01"
+                  {...register("min", { required: true })}
+                />
+                {errors.min && (
+                  <span className="text-danger">This field is required</span>
+                )}
+                {/* {errors.name.type === "minLength" && (
+                      <span className="text-danger">
+                        Min length must be at least 2 characters
+                      </span>
+                    )} */}
+              </div>
+              <div className="mb-3">
+                <label htmlFor="max" className="form-label">
+                  Max:
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="max"
+                  placeholder="2025-12-31"
+                  {...register("max", { required: true })}
+                />
+                {errors.max && (
+                  <span className="text-danger">This field is required</span>
+                )}
+                {/* {errors.name.type === "minLength" && (
+                      <span className="text-danger">
+                        Min length must be at least 2 characters
+                      </span>
+                    )} */}
+              </div>
+              <div className="mb-3">
+                <label htmlFor="value" className="form-label">
+                  Value:
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="value"
+                  placeholder="2022-12-25"
+                  {...register("value", { required: true })}
+                />
+                {errors.value && (
+                  <span className="text-danger">This field is required</span>
+                )}
+                {/* {errors.name.type === "minLength" && (
+                      <span className="text-danger">
+                        Min length must be at least 2 characters
+                      </span>
+                    )} */}
+              </div>
+            </>
+          )}
+          {inpType === "datetime-local" && (
+            <>
+              <div className="mb-3">
+                <label htmlFor="min" className="form-label">
+                  Min:
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="min"
+                  placeholder="2017-01-01T00:00"
+                  {...register("min", { required: true })}
+                />
+                {errors.min && (
+                  <span className="text-danger">This field is required</span>
+                )}
+                {/* {errors.name.type === "minLength" && (
+                      <span className="text-danger">
+                        Min length must be at least 2 characters
+                      </span>
+                    )} */}
+              </div>
+              <div className="mb-3">
+                <label htmlFor="max" className="form-label">
+                  Max:
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="max"
+                  placeholder="2025-12-31T00:00"
+                  {...register("max", { required: true })}
+                />
+                {errors.max && (
+                  <span className="text-danger">This field is required</span>
+                )}
+                {/* {errors.name.type === "minLength" && (
+                      <span className="text-danger">
+                        Min length must be at least 2 characters
+                      </span>
+                    )} */}
+              </div>
+              <div className="mb-3">
+                <label htmlFor="value" className="form-label">
+                  Value:
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="value"
+                  placeholder="2022-12-25T19:30"
+                  {...register("value", { required: true })}
+                />
+                {errors.value && (
+                  <span className="text-danger">This field is required</span>
+                )}
+                {/* {errors.name.type === "minLength" && (
+                      <span className="text-danger">
+                        Min length must be at least 2 characters
+                      </span>
+                    )} */}
+              </div>
+            </>
+          )}
+          {inpType === "week" && (
+            <>
+              <div className="mb-3">
+                <label htmlFor="min" className="form-label">
+                  Min:
+                </label>
+                <input
+                  type="week"
+                  className="form-control"
+                  id="min"
+                  min="2017-W01"
+                  max="2024-W52"
+                  placeholder="2017-W01"
+                  {...register("min", { required: true })}
+                />
+                {errors.min && (
+                  <span className="text-danger">This field is required</span>
+                )}
+                {/* {errors.name.type === "minLength" && (
+                      <span className="text-danger">
+                        Min length must be at least 2 characters
+                      </span>
+                    )} */}
+              </div>
+              <div className="mb-3">
+                <label htmlFor="max" className="form-label">
+                  Max:
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="max"
+                  min="2017-W01"
+                  max="2024-W52"
+                  placeholder="2024-W52"
+                  {...register("max", { required: true })}
+                />
+                {errors.max && (
+                  <span className="text-danger">This field is required</span>
+                )}
+                {/* {errors.name.type === "minLength" && (
+                      <span className="text-danger">
+                        Min length must be at least 2 characters
+                      </span>
+                    )} */}
+              </div>
+            </>
+          )}
+          {inpType === "month" && (
+            <>
+              <div className="mb-3">
+                <label htmlFor="min" className="form-label">
+                  Min:
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="min"
+                  min="2017-01"
+                  max="2025-12"
+                  placeholder="2017-01"
+                  {...register("min", { required: true })}
+                />
+                {errors.min && (
+                  <span className="text-danger">This field is required</span>
+                )}
+                {/* {errors.name.type === "minLength" && (
+                      <span className="text-danger">
+                        Min length must be at least 2 characters
+                      </span>
+                    )} */}
+              </div>
+              <div className="mb-3">
+                <label htmlFor="max" className="form-label">
+                  Max:
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="max"
+                  min="2017-01"
+                  max="2025-12"
+                  placeholder="2025-12"
+                  {...register("max", { required: true })}
+                />
+                {errors.max && (
+                  <span className="text-danger">This field is required</span>
+                )}
+                {/* {errors.name.type === "minLength" && (
+                      <span className="text-danger">
+                        Min length must be at least 2 characters
+                      </span>
+                    )} */}
+              </div>
+            </>
+          )}
           <div className="form-check">
             <input
               className="form-check-input"
