@@ -128,7 +128,7 @@ const InpurCreator = ({
             </label>
             <select
               className="form-select"
-              aria-label="Default select example"
+              aria-label="Select input type"
               {...register("type", { required: true })}
             >
               {inputTypes.map((type, index) => (
