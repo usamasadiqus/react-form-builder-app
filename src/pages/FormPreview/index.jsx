@@ -3,9 +3,16 @@ import { useForm } from "react-hook-form";
 import styles from "./FormPreview.module.css";
 
 const FormPreview = () => {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   let data = JSON.parse(localStorage.getItem("form-data"));
+
+  console.log("file preview data =>", data);
+  // console.log("errors", errors);
 
   const exportForm = () => {
     let encodedUri = `data:text/json;charset=utf-8,${encodeURIComponent(
@@ -27,7 +34,7 @@ const FormPreview = () => {
     <div className="container my-5">
       {!data ? (
         <div className={`${styles.flex_style} text-center`}>
-          <h2 className="mt-5 display-3">No fields available!</h2>
+          <h2 className="mt-5 display-3">There isn't a form!</h2>
           <Link to="/">Create Form</Link>
         </div>
       ) : (
@@ -72,9 +79,11 @@ const FormPreview = () => {
                             // pattern={pattern}
                             {...register(`${name}`, { required })}
                           />
-                          {/* {errors.name && (
-                    <span className="text-danger">This field is required</span>
-                  )} */}
+                          {/* {errors.name.type === "required" && (
+                            <span className="text-danger">
+                              This field is required
+                            </span>
+                          )} */}
                         </div>
                       );
                     })}
