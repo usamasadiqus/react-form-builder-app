@@ -48,6 +48,22 @@ const InpurCreator = ({
       value: "range",
     },
     {
+      label: "Color",
+      value: "color",
+    },
+    {
+      label: "Hidden",
+      value: "hidden",
+    },
+    {
+      label: "Image",
+      value: "image",
+    },
+    {
+      label: "Reset",
+      value: "reset",
+    },
+    {
       label: "Search",
       value: "search",
     },

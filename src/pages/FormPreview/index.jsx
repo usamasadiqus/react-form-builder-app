@@ -11,9 +11,6 @@ const FormPreview = () => {
 
   let data = JSON.parse(localStorage.getItem("form-data"));
 
-  console.log("file preview data =>", data);
-  // console.log("errors", errors);
-
   const exportForm = () => {
     let encodedUri = `data:text/json;charset=utf-8,${encodeURIComponent(
       JSON.stringify(data, null, 4)
@@ -27,7 +24,7 @@ const FormPreview = () => {
   };
 
   const onSubmit = (data) => {
-    console.log(data);
+    console.log("file preview save data", data);
   };
 
   return (
@@ -59,24 +56,32 @@ const FormPreview = () => {
                         pattern,
                       } = input;
 
+                      /* const properties = {};
+
+                      Object.keys(input).forEach(
+                        (key) => input[key] && (properties[key] = input[key])
+                      ); */
+
                       return (
                         <div className="mb-3" key={index}>
                           <label
-                            htmlFor="name"
+                            htmlFor={name}
                             className="form-label"
                             style={{ textTransform: "capitalize" }}
                           >
                             {name}
                           </label>
+                          <input type="" />
                           <input
                             type={type}
                             className="form-control"
-                            id={name}
-                            // min={min === "" ? "" : min}
-                            // minLength={minLength === "" ? "" : minLength}
-                            // max={max === "" ? "" : max}
-                            // maxLength={maxLength === "" ? "" : maxLength}
-                            // pattern={pattern}
+                            // id={name}
+                            {...(min ? { min } : {})}
+                            {...(minLength ? { minLength } : {})}
+                            {...(max ? { max } : {})}
+                            {...(maxLength ? { maxLength } : {})}
+                            {...(pattern ? { pattern } : {})}
+                            // {...properties}
                             {...register(`${name}`, { required })}
                           />
                           {/* {errors.name.type === "required" && (
