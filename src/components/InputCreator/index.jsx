@@ -5,6 +5,8 @@ const InpurCreator = ({
   errors,
   validation,
   setValidation,
+  inpType,
+  setInpType,
 }) => {
   const inputTypes = [
     {
@@ -92,6 +94,10 @@ const InpurCreator = ({
       value: "month",
     },
   ];
+
+  const selectedItem = (val) => {
+    console.log(val);
+  };
 
   return (
     <div className="card my-5">

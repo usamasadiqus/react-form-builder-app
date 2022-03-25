@@ -13,6 +13,7 @@ const FormBuilder = () => {
     title: "",
     fields: [],
   });
+  const [inpType, setInpType] = useState("");
   let [counter, setCounter] = useState(0);
 
   useEffect(() => {
@@ -134,6 +135,8 @@ const FormBuilder = () => {
               errors={errors}
               validation={validation}
               setValidation={setValidation}
+              inpType={inpType}
+              setInpType={setInpType}
             />
           </div>
         </div>
