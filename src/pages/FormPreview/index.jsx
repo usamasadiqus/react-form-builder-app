@@ -46,7 +46,7 @@ const FormPreview = () => {
                         type={type}
                         className="form-control"
                         id="name"
-                        required={required ? required : "false"}
+                        required={required}
                         min={min === 0 ? "" : min}
                         minLength={minLength === 0 ? "" : minLength}
                         max={max === 0 ? "" : max}

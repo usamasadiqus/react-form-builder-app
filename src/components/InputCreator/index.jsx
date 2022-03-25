@@ -180,7 +180,7 @@ const InpurCreator = ({ handleSubmit, onSubmit, register, errors }) => {
                   className="form-control"
                   id="min-length"
                   defaultValue={0}
-                  {...register("min-length")}
+                  {...register("minLength")}
                 />
               </div>
               <div className="mb-3">
@@ -192,7 +192,7 @@ const InpurCreator = ({ handleSubmit, onSubmit, register, errors }) => {
                   className="form-control"
                   id="max-length"
                   defaultValue={0}
-                  {...register("max-length")}
+                  {...register("maxLength")}
                 />
               </div>
               <div className="mb-3">
