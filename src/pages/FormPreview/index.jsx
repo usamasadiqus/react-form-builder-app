@@ -64,11 +64,11 @@ const FormPreview = () => {
                           <input
                             type={type}
                             className="form-control"
-                            id="name"
-                            // min={min === 0 ? "" : min}
-                            // minLength={minLength === 0 ? "" : minLength}
-                            // max={max === 0 ? "" : max}
-                            // maxLength={maxLength === 0 ? "" : maxLength}
+                            id={name}
+                            // min={min === "" ? "" : min}
+                            // minLength={minLength === "" ? "" : minLength}
+                            // max={max === "" ? "" : max}
+                            // maxLength={maxLength === "" ? "" : maxLength}
                             // pattern={pattern}
                             {...register(`${name}`, { required })}
                           />

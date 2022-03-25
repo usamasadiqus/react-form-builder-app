@@ -29,11 +29,42 @@ const FormBuilder = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    let { max, maxLength, min, minLength, name, pattern, required, type } =
+      data;
+
+    if (max == 0) max = "";
+    if (maxLength == 0) maxLength = "";
+    if (min == 0) min = "";
+    if (minLength == 0) minLength = "";
+
+    console.log({
+      name,
+      max,
+      maxLength,
+      min,
+      minLength,
+      pattern,
+      required,
+      type,
+    });
+
     let inputData;
 
     setCounter((prevState) => {
       let id = prevState + 1;
-      inputData = Object.assign({ id }, data);
+      inputData = Object.assign(
+        { id },
+        {
+          name,
+          max,
+          maxLength,
+          min,
+          minLength,
+          pattern,
+          required,
+          type,
+        }
+      );
       return id;
     });
 
