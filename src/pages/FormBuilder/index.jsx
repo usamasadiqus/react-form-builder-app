@@ -11,18 +11,20 @@ const FormBuilder = () => {
   const [validation, setValidation] = useState(false);
   const [inputField, setInputField] = useState({
     title: "",
-    fields: [],
+    inFields: [],
   });
   const [inpType, setInpType] = useState("");
   let [counter, setCounter] = useState(0);
+  const [options, setOptions] = useState([]);
 
   useEffect(() => {
     localStorage.removeItem("form-data");
   }, []);
 
-  const { fields } = inputField;
+  const { inFields } = inputField;
 
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },
@@ -30,23 +32,43 @@ const FormBuilder = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    let { max, maxLength, min, minLength, name, pattern, required, type } =
-      data;
-
-    if (max == 0) max = "";
-    if (maxLength == 0) maxLength = "";
-    if (min == 0) min = "";
-    if (minLength == 0) minLength = "";
-
-    console.log({
-      name,
+    let {
+      accept,
+      alt,
+      cols,
       max,
       maxLength,
       min,
       minLength,
+      name,
       pattern,
       required,
+      rows,
+      src,
       type,
+      value,
+    } = data;
+
+    if (max == 0 || max == undefined) max = "";
+    if (maxLength == 0 || maxLength == undefined) maxLength = "";
+    if (min == 0 || min == undefined) min = "";
+    if (minLength == 0 || minLength == undefined) minLength = "";
+
+    console.log({
+      accept,
+      alt,
+      cols,
+      max,
+      maxLength,
+      min,
+      minLength,
+      name,
+      pattern,
+      required,
+      rows,
+      src,
+      type,
+      value,
     });
 
     let inputData;
@@ -56,22 +78,28 @@ const FormBuilder = () => {
       inputData = Object.assign(
         { id },
         {
-          name,
+          accept,
+          alt,
+          cols,
           max,
           maxLength,
           min,
           minLength,
+          name,
           pattern,
           required,
+          rows,
+          src,
           type,
+          value,
         }
       );
       return id;
     });
 
-    fields.push(inputData);
+    inFields.push(inputData);
 
-    setInputField({ ...inputField, fields });
+    setInputField({ ...inputField, inFields });
 
     setValidation(false);
 
@@ -84,7 +112,7 @@ const FormBuilder = () => {
 
   const deleteInput = (inputId) => {
     // let data = [...inputField];
-    // let eme = fields.filter((item) => item.id !== inputId);
+    // let eme = inFields.filter((item) => item.id !== inputId);
     // setInputField(inputField.title);
   };
 
@@ -118,7 +146,7 @@ const FormBuilder = () => {
           <div className="col">
             <h3 className={`${styles.col_title} text-center`}> Layout </h3>
             <Layout
-              fields={fields}
+              inFields={inFields}
               editInput={editInput}
               deleteInput={deleteInput}
             />
@@ -129,6 +157,7 @@ const FormBuilder = () => {
               Input Creator{" "}
             </h3>
             <InputCreator
+              control={control}
               handleSubmit={handleSubmit}
               onSubmit={onSubmit}
               register={register}
@@ -137,10 +166,12 @@ const FormBuilder = () => {
               setValidation={setValidation}
               inpType={inpType}
               setInpType={setInpType}
+              options={options}
+              setOptions={setOptions}
             />
           </div>
         </div>
-        {fields.length > 0 && (
+        {inFields.length > 0 && (
           <div className="row">
             <div className="col">
               <button

@@ -1,4 +1,7 @@
+import { useFieldArray } from "react-hook-form";
+
 const InpurCreator = ({
+  control,
   handleSubmit,
   onSubmit,
   register,
@@ -7,7 +10,14 @@ const InpurCreator = ({
   setValidation,
   inpType,
   setInpType,
+  options,
+  setOptions,
 }) => {
+  const { append, fields, remove } = useFieldArray({
+    control,
+    name: "fieldOptions",
+  });
+
   const inputTypes = [
     {
       label: "Text",
@@ -95,10 +105,6 @@ const InpurCreator = ({
     },
   ];
 
-  const selectedItem = (val) => {
-    console.log(val);
-  };
-
   return (
     <div className="card my-5">
       <div className="card-body">
@@ -144,6 +150,65 @@ const InpurCreator = ({
           {/* {errors.type && (
                     <span className="text-danger">This field is required</span>
                   )} */}
+          {inpType === "select" && (
+            <>
+              {fields.map((item, index) => (
+                <div className="form-row form-group" key={index}>
+                  <div className="col">
+                    <input
+                      type="text"
+                      className="form-control"
+                      {...register(`options.${index}.option`)}
+                      defaultValue={item.option}
+                    />
+                  </div>
+                  <div className="col">
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => remove(index)}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() =>
+                      append({
+                        fieldOptions: "",
+                      })
+                    }
+                  >
+                    Add
+                  </button>
+                </div>
+              ))}
+            </>
+          )}
+          {inpType === "radio" && (
+            <>
+              <div className="mb-3">
+                <label htmlFor="option" className="form-label">
+                  Option:
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="option"
+                  {...register("option.options", {
+                    required: true,
+                  })}
+                />
+                {errors.option && (
+                  <span className="text-danger">This field is required</span>
+                )}
+                {/* {errors.name.type === "minLength" && (
+                      <span className="text-danger">
+                        Min length must be at least 2 characters
+                      </span>
+                    )} */}
+              </div>
+            </>
+          )}
           {inpType === "textarea" && (
             <>
               <div className="mb-3">

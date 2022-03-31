@@ -1,10 +1,10 @@
 import styles from "./Layout.module.css";
 
-const Layout = ({ fields, editInput, deleteInput }) => {
+const Layout = ({ inFields, editInput, deleteInput }) => {
   return (
     <ul className="list-group my-5">
-      {fields.length > 0 &&
-        fields.map((input, index) => {
+      {inFields.length > 0 &&
+        inFields.map((input, index) => {
           return (
             <li
               className="list-group-item d-flex justify-content-between"
